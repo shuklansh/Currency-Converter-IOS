@@ -9,6 +9,13 @@ import SwiftUI
 
 struct SelectCurrencyView: View {
     @Environment(\.dismiss) var dismissSelectCurrencyView
+    let currencyInfoList = [
+        CurrencyInfoItem(currencyImageResource: .copperpenny, currencyName: "copper penny"),
+        CurrencyInfoItem(currencyImageResource: .silverpenny, currencyName: "silver penny"),
+        CurrencyInfoItem(currencyImageResource: .goldpenny, currencyName: "gold penny"),
+        CurrencyInfoItem(currencyImageResource: .silverpiece, currencyName: "silver piece"),
+        CurrencyInfoItem(currencyImageResource: .goldpiece, currencyName: "gold piece")
+    ]
     var body: some View {
         ZStack{
             Image(.parchment)
@@ -20,13 +27,13 @@ struct SelectCurrencyView: View {
                 CurrencyChangeView(selectCurrencyText: "Select the currency you are starting with:")
                 ScrollView(.horizontal,  showsIndicators: false) {
                     LazyHGrid(rows: [GridItem()]) {
-                        CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
-                        CurrencyView(currencyImageResource: .silverpenny, currencyName: "silver penny")
-                        CurrencyView(currencyImageResource: .goldpenny, currencyName: "gold penny")
-                        CurrencyView(currencyImageResource: .silverpiece, currencyName: "silver piece")
-                        CurrencyView(currencyImageResource: .goldpiece, currencyName: "gold piece")
+                        ForEach(currencyInfoList) { currencyInfoListItem in
+                            CurrencyView(
+                                currencyImageResource: currencyInfoListItem.currencyImageResource,
+                                currencyName: currencyInfoListItem.currencyName
+                            )
+                        }
                     }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
-                
                 }
                 CurrencyChangeView(selectCurrencyText: "Select the currency you would like to convert to:")
                 Button("Done") {
@@ -80,4 +87,19 @@ struct CurrencyView: View {
 
 #Preview {
     SelectCurrencyView()
+}
+//CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
+//CurrencyView(currencyImageResource: .silverpenny, currencyName: "silver penny")
+//CurrencyView(currencyImageResource: .goldpenny, currencyName: "gold penny")
+//CurrencyView(currencyImageResource: .silverpiece, currencyName: "silver piece")
+//CurrencyView(currencyImageResource: .goldpiece, currencyName: "gold piece")
+
+class CurrencyInfoItem: Identifiable {
+    var currencyName: String
+    var currencyImageResource: ImageResource
+    
+    init(currencyImageResource: ImageResource, currencyName: String) {
+        self.currencyName = currencyName
+        self.currencyImageResource = currencyImageResource
+    }
 }
