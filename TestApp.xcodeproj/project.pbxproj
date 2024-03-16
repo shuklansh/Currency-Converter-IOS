@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B84D23DA2B0D086700B8D16C /* syntaxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D23D92B0D086700B8D16C /* syntaxTest.swift */; };
 		B8554EBA2B07A9350091FE89 /* TestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554EB92B07A9350091FE89 /* TestAppApp.swift */; };
 		B8554EBC2B07A9350091FE89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554EBB2B07A9350091FE89 /* ContentView.swift */; };
 		B8554EBE2B07A9370091FE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8554EBD2B07A9370091FE89 /* Assets.xcassets */; };
@@ -14,6 +15,9 @@
 		B8554ECC2B07A9380091FE89 /* TestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554ECB2B07A9380091FE89 /* TestAppTests.swift */; };
 		B8554ED62B07A9380091FE89 /* TestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554ED52B07A9380091FE89 /* TestAppUITests.swift */; };
 		B8554ED82B07A9380091FE89 /* TestAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554ED72B07A9380091FE89 /* TestAppUITestsLaunchTests.swift */; };
+		B85E9E352B9E188D003180A1 /* SelectCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85E9E342B9E188D003180A1 /* SelectCurrencyView.swift */; };
+		B8F26F8B2B97933100D6F643 /* ExchangeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F26F8A2B97933100D6F643 /* ExchangeInfoView.swift */; };
+		B8F26F8D2B97943100D6F643 /* NewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F26F8C2B97943100D6F643 /* NewAssets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B84D23D92B0D086700B8D16C /* syntaxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syntaxTest.swift; sourceTree = "<group>"; };
 		B8554EB62B07A9350091FE89 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8554EB92B07A9350091FE89 /* TestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppApp.swift; sourceTree = "<group>"; };
 		B8554EBB2B07A9350091FE89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +50,9 @@
 		B8554ED12B07A9380091FE89 /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8554ED52B07A9380091FE89 /* TestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppUITests.swift; sourceTree = "<group>"; };
 		B8554ED72B07A9380091FE89 /* TestAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B85E9E342B9E188D003180A1 /* SelectCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyView.swift; sourceTree = "<group>"; };
+		B8F26F8A2B97933100D6F643 /* ExchangeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeInfoView.swift; sourceTree = "<group>"; };
+		B8F26F8C2B97943100D6F643 /* NewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NewAssets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +105,10 @@
 			children = (
 				B8554EB92B07A9350091FE89 /* TestAppApp.swift */,
 				B8554EBB2B07A9350091FE89 /* ContentView.swift */,
+				B85E9E342B9E188D003180A1 /* SelectCurrencyView.swift */,
+				B8F26F8A2B97933100D6F643 /* ExchangeInfoView.swift */,
 				B8554EBD2B07A9370091FE89 /* Assets.xcassets */,
+				B8F26F8C2B97943100D6F643 /* NewAssets.xcassets */,
 				B8554EBF2B07A9370091FE89 /* TestApp.entitlements */,
 				B8554EC02B07A9370091FE89 /* Preview Content */,
 			);
@@ -116,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				B8554ECB2B07A9380091FE89 /* TestAppTests.swift */,
+				B84D23D92B0D086700B8D16C /* syntaxTest.swift */,
 			);
 			path = TestAppTests;
 			sourceTree = "<group>";
@@ -233,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F26F8D2B97943100D6F643 /* NewAssets.xcassets in Resources */,
 				B8554EC22B07A9370091FE89 /* Preview Assets.xcassets in Resources */,
 				B8554EBE2B07A9370091FE89 /* Assets.xcassets in Resources */,
 			);
@@ -260,7 +273,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8554EBC2B07A9350091FE89 /* ContentView.swift in Sources */,
+				B85E9E352B9E188D003180A1 /* SelectCurrencyView.swift in Sources */,
 				B8554EBA2B07A9350091FE89 /* TestAppApp.swift in Sources */,
+				B8F26F8B2B97933100D6F643 /* ExchangeInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B84D23DA2B0D086700B8D16C /* syntaxTest.swift in Sources */,
 				B8554ECC2B07A9380091FE89 /* TestAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
