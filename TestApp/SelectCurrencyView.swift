@@ -9,14 +9,21 @@ import SwiftUI
 
 struct SelectCurrencyView: View {
     @Environment(\.dismiss) var dismissSelectCurrencyView
+    var selectedItem: CurrencyInfoItem
     let currencyInfoList = [
-        CurrencyInfoItem(currencyImageResource: .copperpenny, currencyName: "copper penny"),
-        CurrencyInfoItem(currencyImageResource: .silverpenny, currencyName: "silver penny"),
-        CurrencyInfoItem(currencyImageResource: .goldpenny, currencyName: "gold penny"),
-        CurrencyInfoItem(currencyImageResource: .silverpiece, currencyName: "silver piece"),
-        CurrencyInfoItem(currencyImageResource: .goldpiece, currencyName: "gold piece")
+        CurrencyInfoItem(currencyImageResource: .copperpenny, 
+                         currencyName: "copper penny"),
+        CurrencyInfoItem(currencyImageResource: .silverpenny,
+                         currencyName: "silver penny"),
+        CurrencyInfoItem(currencyImageResource: .goldpenny, 
+                         currencyName: "gold penny"),
+        CurrencyInfoItem(currencyImageResource: .silverpiece, 
+                         currencyName: "silver piece"),
+        CurrencyInfoItem(currencyImageResource: .goldpiece,
+                         currencyName: "gold piece")
     ]
     var body: some View {
+        let selectedItem = selectedItem
         ZStack{
             Image(.parchment)
                 .resizable()
@@ -25,16 +32,17 @@ struct SelectCurrencyView: View {
                 .ignoresSafeArea()
             VStack{
                 CurrencyChangeView(selectCurrencyText: "Select the currency you are starting with:")
-                ScrollView(.horizontal,  showsIndicators: false) {
-                    LazyHGrid(rows: [GridItem()]) {
+//                ScrollView(.horizontal,  showsIndicators: false) {
+                    LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
                         ForEach(currencyInfoList) { currencyInfoListItem in
                             CurrencyView(
                                 currencyImageResource: currencyInfoListItem.currencyImageResource,
-                                currencyName: currencyInfoListItem.currencyName
+                                currencyName: currencyInfoListItem.currencyName,
+                                selectedItem: selectedItem
                             )
                         }
                     }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
-                }
+//                }
                 CurrencyChangeView(selectCurrencyText: "Select the currency you would like to convert to:")
                 Button("Done") {
                     dismissSelectCurrencyView()
@@ -65,29 +73,44 @@ struct CurrencyChangeView: View {
 struct CurrencyView: View {
     var currencyImageResource: ImageResource
     var currencyName: String
+    var selectedItem: CurrencyInfoItem
     var body: some View {
-        ZStack(alignment: .bottom){
-            Image(currencyImageResource)
-                .resizable()
-                .scaledToFit()
-                .frame(width:110, height: 110)
-
-            Text(currencyName)
-                .padding(2)
-                .font(.caption)
-                .frame(maxWidth: .infinity)
-                .background(Color.brown.opacity(0.75))
+        if (currencyImageResource == selectedItem.currencyImageResource) {
+            ZStack(alignment: .bottom){
+                Image(currencyImageResource)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:110, height: 110)
+                Text(currencyName)
+                    .padding(2)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.brown.opacity(0.75))
+            }
+            .padding()
+            .frame(width: 115, height: 115)
+            .background(Color.black.opacity(0.8))
+            .clipShape(RoundedRectangle(cornerRadius:25))
+        } else {
+            ZStack(alignment: .bottom){
+                Image(currencyImageResource)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:110, height: 110)
+                Text(currencyName)
+                    .padding(2)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.brown.opacity(0.75))
+            }
+            .padding()
+            .frame(width: 115, height: 115)
+            .background(Color.brown)
+            .clipShape(RoundedRectangle(cornerRadius:25))
         }
-        .padding()
-        .frame(width: 115, height: 115)
-        .background(Color.brown)
-        .clipShape(RoundedRectangle(cornerRadius:25))
     }
 }
 
-#Preview {
-    SelectCurrencyView()
-}
 //CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
 //CurrencyView(currencyImageResource: .silverpenny, currencyName: "silver penny")
 //CurrencyView(currencyImageResource: .goldpenny, currencyName: "gold penny")

@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var showExchangeInfo = false
     @State var silverText = ""
     @State var goldText = ""
+    @State var showChangeCurrencyScreen = false
     var body: some View {
         ZStack{
             Image(.background)
@@ -27,10 +28,20 @@ struct ContentView: View {
                 HStack{
                     VStack{
                         HStack{
-                            Image(.silverpenny)
+                            Image(.silverpiece)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 40)
+                                .onTapGesture {
+                                    showChangeCurrencyScreen.toggle()
+                                }
+                                .sheet(
+                                    isPresented: $showChangeCurrencyScreen,
+                                    content: { SelectCurrencyView(selectedItem: CurrencyInfoItem(
+                                        currencyImageResource: .silverpiece,
+                                        currencyName: "Silver piece")
+                                    ) }
+                                )
                             Text("Silver \npiece")
                                 .font(.headline)
                                 .foregroundStyle(.white)
