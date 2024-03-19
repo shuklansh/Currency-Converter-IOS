@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SelectCurrencyView: View {
     @Environment(\.dismiss) var dismissSelectCurrencyView
-    var selectedItem: CurrencyInfoItem
+//    var selectedItem: CurrencyInfoItem
     let currencyInfoList = [
         CurrencyInfoItem(currencyImageResource: .copperpenny, 
                          currencyName: "copper penny"),
@@ -23,7 +23,7 @@ struct SelectCurrencyView: View {
                          currencyName: "gold piece")
     ]
     var body: some View {
-        let selectedItem = selectedItem
+//        let selectedItem = selectedItem
         ZStack{
             Image(.parchment)
                 .resizable()
@@ -37,8 +37,8 @@ struct SelectCurrencyView: View {
                         ForEach(currencyInfoList) { currencyInfoListItem in
                             CurrencyView(
                                 currencyImageResource: currencyInfoListItem.currencyImageResource,
-                                currencyName: currencyInfoListItem.currencyName,
-                                selectedItem: selectedItem
+                                currencyName: currencyInfoListItem.currencyName
+//                                selectedItem: selectedItem
                             )
                         }
                     }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
@@ -73,42 +73,28 @@ struct CurrencyChangeView: View {
 struct CurrencyView: View {
     var currencyImageResource: ImageResource
     var currencyName: String
-    var selectedItem: CurrencyInfoItem
+//    var selectedItem: CurrencyInfoItem
     var body: some View {
-        if (currencyImageResource == selectedItem.currencyImageResource) {
-            ZStack(alignment: .bottom){
-                Image(currencyImageResource)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:110, height: 110)
-                Text(currencyName)
-                    .padding(2)
-                    .font(.caption)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.brown.opacity(0.75))
-            }
-            .padding()
-            .frame(width: 115, height: 115)
-            .background(Color.black.opacity(0.8))
-            .clipShape(RoundedRectangle(cornerRadius:25))
-        } else {
-            ZStack(alignment: .bottom){
-                Image(currencyImageResource)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:110, height: 110)
-                Text(currencyName)
-                    .padding(2)
-                    .font(.caption)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.brown.opacity(0.75))
-            }
-            .padding()
-            .frame(width: 115, height: 115)
-            .background(Color.brown)
-            .clipShape(RoundedRectangle(cornerRadius:25))
+        ZStack(alignment: .bottom){
+            Image(currencyImageResource)
+                .resizable()
+                .scaledToFit()
+                .frame(width:110, height: 110)
+            Text(currencyName)
+                .padding(2)
+                .font(.caption)
+                .frame(maxWidth: .infinity)
+                .background(Color.brown.opacity(0.75))
         }
+        .padding()
+        .frame(width: 115, height: 115)
+        .background(Color.brown)
+        .clipShape(RoundedRectangle(cornerRadius:25))
     }
+}
+
+#Preview{
+    SelectCurrencyView()
 }
 
 //CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
@@ -126,3 +112,8 @@ class CurrencyInfoItem: Identifiable {
         self.currencyImageResource = currencyImageResource
     }
 }
+
+//struct CurrencyInfoItem {
+//    let currencyImageResource: ImageResource
+//    let currencyName: String
+//}
