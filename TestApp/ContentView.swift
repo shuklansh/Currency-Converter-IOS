@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showExchangeInfo = false
-    @State var silverText = ""
-    @State var goldText = ""
+    @State var leftAmount = ""
+    @State var rightAmount = ""
+    @State var leftCurrency = Currency.silverPiece
+    @State var rightCurrency = Currency.goldPiece
 //    @State var showChangeCurrencyScreen = false
     var body: some View {
         ZStack{
@@ -26,52 +28,19 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .foregroundStyle(.white)
                 HStack{
-                    VStack{
-                        HStack{
-                            Image(.silverpiece)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 40)
-//                                .onTapGesture {
-//                                    showChangeCurrencyScreen.toggle()
-//                                }
-//                                .sheet(
-//                                    isPresented: $showChangeCurrencyScreen,
-//                                    content: { SelectCurrencyView(selectedItem: CurrencyInfoItem(
-//                                        currencyImageResource: .silverpiece,
-//                                        currencyName: "Silver piece")
-//                                    ) }
-//                                )
-                            Text("Silver \npiece")
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                                .padding(12)
-                        }
-                        TextField("Amount", text: $silverText)
-                            .foregroundStyle(.white)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    
+                    CurrencyInputView(
+                        currencyInput: leftCurrency,
+                        currencyAmount: leftAmount
+                    )
                     Image(systemName: "equal")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .symbolEffect(.pulse)
                         .padding(8)
-                    VStack{
-                        HStack{
-                            Image(.goldpiece)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 40)
-                            Text("Gold \npiece")
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                                .padding(12)
-                        }
-                        TextField("Amount", text: $goldText)
-                            .foregroundStyle(.white)
-                            .textFieldStyle(.roundedBorder)
-                    }
+                    CurrencyInputView(
+                        currencyInput: rightCurrency,
+                        currencyAmount: rightAmount
+                    )
                 }.padding(.horizontal,18)
                     .padding(.bottom,19)
                     .background(.black.opacity(0.4))

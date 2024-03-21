@@ -10,6 +10,8 @@ import SwiftUI
 struct SelectCurrencyView: View {
     @Environment(\.dismiss) var dismissSelectCurrencyView
 //    var selectedItem: CurrencyInfoItem
+    @State var currencySelectedFrom: Currency
+    @State var currencySelectedTo: Currency
     let currencyInfoList = [
         CurrencyInfoItem(currencyImageResource: .copperpenny, 
                          currencyName: "copper penny"),
@@ -22,6 +24,18 @@ struct SelectCurrencyView: View {
         CurrencyInfoItem(currencyImageResource: .goldpiece,
                          currencyName: "gold piece")
     ]
+//    var currencyList = [
+//        Currency(currencyImageResource: .copperpenny,
+//                         currencyName: "copper penny"),
+//        Currency(currencyImageResource: .silverpenny,
+//                         currencyName: "silver penny"),
+//        Currency(currencyImageResource: .goldpenny,
+//                         currencyName: "gold penny"),
+//        Currency(currencyImageResource: .silverpiece,
+//                         currencyName: "silver piece"),
+//        Currency(currencyImageResource: .goldpiece,
+//                         currencyName: "gold piece")
+//    ]
     var body: some View {
 //        let selectedItem = selectedItem
         ZStack{
@@ -33,17 +47,19 @@ struct SelectCurrencyView: View {
             VStack{
                 CurrencyChangeView(selectCurrencyText: "Select the currency you are starting with:")
 //                ScrollView(.horizontal,  showsIndicators: false) {
-                    LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
-                        ForEach(currencyInfoList) { currencyInfoListItem in
-                            CurrencyView(
-                                currencyImageResource: currencyInfoListItem.currencyImageResource,
-                                currencyName: currencyInfoListItem.currencyName
-//                                selectedItem: selectedItem
-                            )
-                        }
-                    }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
+//                    LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
+//                        ForEach(currencyInfoList) { currencyInfoListItem in
+//                            CurrencyView(
+//                                currencyImageResource: currencyInfoListItem.currencyImageResource,
+//                                currencyName: currencyInfoListItem.currencyName
+////                                selectedItem: selectedItem
+//                            )
+//                        }
+//                    }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
 //                }
+                IconGrid(currencySelected: currencySelectedFrom)
                 CurrencyChangeView(selectCurrencyText: "Select the currency you would like to convert to:")
+                IconGrid(currencySelected: currencySelectedTo)
                 Button("Done") {
                     dismissSelectCurrencyView()
                 }
@@ -65,7 +81,7 @@ struct CurrencyChangeView: View {
                 .font(.title3)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-                .padding(EdgeInsets(top: 0, leading: 100, bottom: 0, trailing: 100))
+                .padding(EdgeInsets(top: 0, leading: 90, bottom: 0, trailing: 90))
         }
     }
 }
@@ -94,7 +110,10 @@ struct CurrencyView: View {
 }
 
 #Preview{
-    SelectCurrencyView()
+    SelectCurrencyView(
+        currencySelectedFrom: Currency.goldPiece,
+        currencySelectedTo: Currency.silverPiece
+    )
 }
 
 //CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
