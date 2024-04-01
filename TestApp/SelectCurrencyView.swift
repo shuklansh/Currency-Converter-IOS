@@ -98,12 +98,12 @@ struct CurrencyView: View {
     }
 }
 
-//#Preview{
-//    SelectCurrencyView(
-//        currencySelectedFrom: Currency.goldPiece,
-//        currencySelectedTo: Currency.silverPiece
-//    )
-//}
+#Preview{
+    SelectCurrencyView(
+        currencySelectedFrom: .constant(Currency.goldPiece),
+        currencySelectedTo: .constant(Currency.silverPiece)
+    )
+}
 
 //CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
 //CurrencyView(currencyImageResource: .silverpenny, currencyName: "silver penny")

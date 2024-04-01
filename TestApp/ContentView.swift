@@ -34,7 +34,9 @@ struct ContentView: View {
                 HStack{
                     CurrencyInputView(
                         currencyInput: $leftCurrency,
+                        otherCurrencyInput: $rightCurrency,
                         currencyAmount: $leftAmount,
+                        otherCurrencyAmount: $rightAmount,
                         showSelectCurrencyView: $showSelectCurrencyView
                     )
                     Image(systemName: "equal")
@@ -44,7 +46,9 @@ struct ContentView: View {
                         .padding(8)
                     CurrencyInputView(
                         currencyInput: $rightCurrency,
+                        otherCurrencyInput: $leftCurrency,
                         currencyAmount: $rightAmount,
+                        otherCurrencyAmount: $leftAmount,
                         showSelectCurrencyView: $showSelectCurrencyView
                     )
                 }.padding(.horizontal,18)

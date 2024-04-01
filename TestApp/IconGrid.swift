@@ -46,6 +46,6 @@ struct IconGrid: View {
 //                    }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
 //                }
 
-//#Preview {
-//    IconGrid(currencySelected: Currency.goldPenny)
-//}
+#Preview {
+    IconGrid(currencySelected: .constant(Currency.goldPenny))
+}
