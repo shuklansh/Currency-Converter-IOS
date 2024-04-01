@@ -10,8 +10,8 @@ import SwiftUI
 struct SelectCurrencyView: View {
     @Environment(\.dismiss) var dismissSelectCurrencyView
 //    var selectedItem: CurrencyInfoItem
-    @State var currencySelectedFrom: Currency
-    @State var currencySelectedTo: Currency
+    @Binding var currencySelectedFrom: Currency
+    @Binding var currencySelectedTo: Currency
     let currencyInfoList = [
         CurrencyInfoItem(currencyImageResource: .copperpenny, 
                          currencyName: "copper penny"),
@@ -46,20 +46,9 @@ struct SelectCurrencyView: View {
                 .ignoresSafeArea()
             VStack{
                 CurrencyChangeView(selectCurrencyText: "Select the currency you are starting with:")
-//                ScrollView(.horizontal,  showsIndicators: false) {
-//                    LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
-//                        ForEach(currencyInfoList) { currencyInfoListItem in
-//                            CurrencyView(
-//                                currencyImageResource: currencyInfoListItem.currencyImageResource,
-//                                currencyName: currencyInfoListItem.currencyName
-////                                selectedItem: selectedItem
-//                            )
-//                        }
-//                    }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
-//                }
-                IconGrid(currencySelected: currencySelectedFrom)
+                IconGrid(currencySelected: $currencySelectedFrom)
                 CurrencyChangeView(selectCurrencyText: "Select the currency you would like to convert to:")
-                IconGrid(currencySelected: currencySelectedTo)
+                IconGrid(currencySelected: $currencySelectedTo)
                 Button("Done") {
                     dismissSelectCurrencyView()
                 }
@@ -109,12 +98,12 @@ struct CurrencyView: View {
     }
 }
 
-#Preview{
-    SelectCurrencyView(
-        currencySelectedFrom: Currency.goldPiece,
-        currencySelectedTo: Currency.silverPiece
-    )
-}
+//#Preview{
+//    SelectCurrencyView(
+//        currencySelectedFrom: Currency.goldPiece,
+//        currencySelectedTo: Currency.silverPiece
+//    )
+//}
 
 //CurrencyView(currencyImageResource: .copperpenny, currencyName: "copper penny")
 //CurrencyView(currencyImageResource: .silverpenny, currencyName: "silver penny")

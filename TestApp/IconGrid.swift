@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IconGrid: View {
-    @State var currencySelected: Currency
+    @Binding var currencySelected: Currency
     var body: some View {
         LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
             ForEach(Currency.allCases) { currency in
@@ -34,6 +34,18 @@ struct IconGrid: View {
     }
 }
 
-#Preview {
-    IconGrid(currencySelected: Currency.goldPenny)
-}
+//                ScrollView(.horizontal,  showsIndicators: false) {
+//                    LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
+//                        ForEach(currencyInfoList) { currencyInfoListItem in
+//                            CurrencyView(
+//                                currencyImageResource: currencyInfoListItem.currencyImageResource,
+//                                currencyName: currencyInfoListItem.currencyName
+////                                selectedItem: selectedItem
+//                            )
+//                        }
+//                    }.padding(EdgeInsets(top: 20, leading: 90, bottom: 20, trailing: 90))
+//                }
+
+//#Preview {
+//    IconGrid(currencySelected: Currency.goldPenny)
+//}

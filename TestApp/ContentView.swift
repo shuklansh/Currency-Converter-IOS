@@ -9,12 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showExchangeInfo = false
+    @State var showSelectCurrencyView = false
+    
     @State var leftAmount = ""
     @State var rightAmount = ""
+    
     @State var leftCurrency = Currency.silverPiece
     @State var rightCurrency = Currency.goldPiece
+    
 //    @State var showChangeCurrencyScreen = false
-    var body: some View {
+    var body: some View { 
         ZStack{
             Image(.background)
                 .resizable()
@@ -29,8 +33,9 @@ struct ContentView: View {
                     .foregroundStyle(.white)
                 HStack{
                     CurrencyInputView(
-                        currencyInput: leftCurrency,
-                        currencyAmount: leftAmount
+                        currencyInput: $leftCurrency,
+                        currencyAmount: $leftAmount,
+                        showSelectCurrencyView: $showSelectCurrencyView
                     )
                     Image(systemName: "equal")
                         .font(.largeTitle)
@@ -38,8 +43,9 @@ struct ContentView: View {
                         .symbolEffect(.pulse)
                         .padding(8)
                     CurrencyInputView(
-                        currencyInput: rightCurrency,
-                        currencyAmount: rightAmount
+                        currencyInput: $rightCurrency,
+                        currencyAmount: $rightAmount,
+                        showSelectCurrencyView: $showSelectCurrencyView
                     )
                 }.padding(.horizontal,18)
                     .padding(.bottom,19)
@@ -60,6 +66,12 @@ struct ContentView: View {
                             .padding(12)
                     }.sheet(isPresented: $showExchangeInfo, content: {
                         ExchangeInfoView()
+                    })
+                    .sheet(isPresented: $showSelectCurrencyView, content: {
+                        SelectCurrencyView(
+                            currencySelectedFrom: $leftCurrency,
+                            currencySelectedTo: $rightCurrency
+                        )
                     })
                 }
             }
