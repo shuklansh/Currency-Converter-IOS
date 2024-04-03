@@ -15,6 +15,9 @@ struct CurrencyInputView: View {
     @Binding var otherCurrencyAmount: String
     
     @Binding var showSelectCurrencyView: Bool
+    
+    var focused: FocusState<Bool>.Binding // focused state binding passed
+    
     var body: some View {
         VStack{
             HStack{
@@ -36,21 +39,42 @@ struct CurrencyInputView: View {
                 .foregroundStyle(.black)
                 .textFieldStyle(.roundedBorder)
                 .onChange(of: currencyAmount, {
-                    otherCurrencyAmount = currencyInput.convertToCurrency(
-                        amountString: currencyAmount,
-                        convertToCurrency: otherCurrencyInput
-                    )
+                    if (focused.wrappedValue) {
+                        otherCurrencyAmount = currencyInput.convertToCurrency(
+                            amountString: currencyAmount,
+                            convertToCurrency: otherCurrencyInput
+                        )
+                    }
                 }
                 )
+                .onChange(of: currencyInput, {
+                    if (focused.wrappedValue) {
+                        otherCurrencyAmount = currencyInput.convertToCurrency(
+                            amountString: currencyAmount,
+                            convertToCurrency: otherCurrencyInput
+                        )
+                    }
+                })
+                .onChange(of: otherCurrencyInput, {
+                    if (focused.wrappedValue) {
+                        otherCurrencyAmount = currencyInput.convertToCurrency(
+                            amountString: currencyAmount,
+                            convertToCurrency: otherCurrencyInput
+                        )
+                    }
+                })
+                .focused(focused)
         }
     }
 }
 
-#Preview {
-    CurrencyInputView(
-        currencyInput: .constant(Currency.goldPenny),
-        otherCurrencyInput: .constant(Currency.silverPenny),
-        currencyAmount: .constant("1"),
-        otherCurrencyAmount: .constant("2"),
-        showSelectCurrencyView: .constant(true))
-}
+//#Preview {
+//    CurrencyInputView(
+//        currencyInput: .constant(Currency.goldPenny),
+//        otherCurrencyInput: .constant(Currency.silverPenny),
+//        currencyAmount: .constant("1"),
+//        otherCurrencyAmount: .constant("2"),
+//        showSelectCurrencyView: .constant(true),
+//        focused: .constant(true)
+//    )
+//}

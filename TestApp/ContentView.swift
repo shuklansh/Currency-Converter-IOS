@@ -16,6 +16,9 @@ struct ContentView: View {
     
     @State var leftCurrency = Currency.silverPiece
     @State var rightCurrency = Currency.goldPiece
+   
+    @FocusState var leftTyping
+    @FocusState var rightTyping
     
 //    @State var showChangeCurrencyScreen = false
     var body: some View { 
@@ -37,7 +40,8 @@ struct ContentView: View {
                         otherCurrencyInput: $rightCurrency,
                         currencyAmount: $leftAmount,
                         otherCurrencyAmount: $rightAmount,
-                        showSelectCurrencyView: $showSelectCurrencyView
+                        showSelectCurrencyView: $showSelectCurrencyView,
+                        focused: $leftTyping
                     )
                     Image(systemName: "equal")
                         .font(.largeTitle)
@@ -49,7 +53,8 @@ struct ContentView: View {
                         otherCurrencyInput: $leftCurrency,
                         currencyAmount: $rightAmount,
                         otherCurrencyAmount: $leftAmount,
-                        showSelectCurrencyView: $showSelectCurrencyView
+                        showSelectCurrencyView: $showSelectCurrencyView,
+                        focused: $rightTyping
                     )
                 }.padding(.horizontal,18)
                     .padding(.bottom,19)
