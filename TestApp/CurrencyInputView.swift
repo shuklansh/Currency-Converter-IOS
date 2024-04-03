@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct CurrencyInputView: View {
     @Binding var currencyInput: Currency
@@ -36,8 +37,12 @@ struct CurrencyInputView: View {
             
             }
             TextField("Amount", text: $currencyAmount)
+                .keyboardType(.numberPad)
                 .foregroundStyle(.black)
                 .textFieldStyle(.roundedBorder)
+                .task {
+                    try? Tips.configure()
+                }
                 .onChange(of: currencyAmount, {
                     if (focused.wrappedValue) {
                         otherCurrencyAmount = currencyInput.convertToCurrency(
@@ -64,6 +69,10 @@ struct CurrencyInputView: View {
                     }
                 })
                 .focused(focused)
+                .popoverTip(
+                    CurrencyTip(),
+                    arrowEdge: .bottom
+                )
         }
     }
 }

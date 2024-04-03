@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B84D23DA2B0D086700B8D16C /* syntaxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D23D92B0D086700B8D16C /* syntaxTest.swift */; };
+		B84E58402BBCF68D00C4F584 /* CurrencyTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E583F2BBCF68D00C4F584 /* CurrencyTip.swift */; };
 		B8554EBA2B07A9350091FE89 /* TestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554EB92B07A9350091FE89 /* TestAppApp.swift */; };
 		B8554EBC2B07A9350091FE89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8554EBB2B07A9350091FE89 /* ContentView.swift */; };
 		B8554EBE2B07A9370091FE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8554EBD2B07A9370091FE89 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		B84D23D92B0D086700B8D16C /* syntaxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syntaxTest.swift; sourceTree = "<group>"; };
+		B84E583F2BBCF68D00C4F584 /* CurrencyTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTip.swift; sourceTree = "<group>"; };
 		B8554EB62B07A9350091FE89 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8554EB92B07A9350091FE89 /* TestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppApp.swift; sourceTree = "<group>"; };
 		B8554EBB2B07A9350091FE89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				B886201D2BAC96DE006D9F04 /* IconGrid.swift */,
 				B86946AB2BAA001C00311FBE /* Currency.swift */,
 				B8F26F8A2B97933100D6F643 /* ExchangeInfoView.swift */,
+				B84E583F2BBCF68D00C4F584 /* CurrencyTip.swift */,
 				B8554EBD2B07A9370091FE89 /* Assets.xcassets */,
 				B8F26F8C2B97943100D6F643 /* NewAssets.xcassets */,
 				B8554EBF2B07A9370091FE89 /* TestApp.entitlements */,
@@ -285,6 +288,7 @@
 				B886201E2BAC96DE006D9F04 /* IconGrid.swift in Sources */,
 				B8554EBC2B07A9350091FE89 /* ContentView.swift in Sources */,
 				B86946AC2BAA001C00311FBE /* Currency.swift in Sources */,
+				B84E58402BBCF68D00C4F584 /* CurrencyTip.swift in Sources */,
 				B85E9E352B9E188D003180A1 /* SelectCurrencyView.swift in Sources */,
 				B8554EBA2B07A9350091FE89 /* TestAppApp.swift in Sources */,
 				B8F26F8B2B97933100D6F643 /* ExchangeInfoView.swift in Sources */,

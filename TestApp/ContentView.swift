@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct ContentView: View {
     @State var showExchangeInfo = false
@@ -73,7 +74,8 @@ struct ContentView: View {
                             .scaledToFit()
                             .frame(height: 20)
                             .padding(12)
-                    }.sheet(isPresented: $showExchangeInfo, content: {
+                    }
+                    .sheet(isPresented: $showExchangeInfo, content: {
                         ExchangeInfoView()
                     })
                     .sheet(isPresented: $showSelectCurrencyView, content: {
